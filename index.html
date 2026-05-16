@@ -330,15 +330,182 @@ body{
     transition:0.25s;
 }
 
+/* HOVER */
+
 .sidebar a:hover{
+
     background:#43256E;
 
-    transform:scale(1.04);
+    transform:
+    scale(1.05)
+    rotate(-1deg);
 
     text-shadow:
-    0 0 12px rgba(255,255,255,0.7);
+    0 0 6px #ED64F5,
+    0 0 12px #ED64F5,
+    0 0 22px rgba(237,100,245,.9);
+
+    box-shadow:
+    0 0 12px rgba(237,100,245,.25),
+    0 0 30px rgba(237,100,245,.22);
+
+    animation:
+    insaneGlitch .08s infinite alternate,
+    pulseMadness 1.2s infinite;
 }
 
+/* crazy floating glow */
+
+.sidebar a:hover::before{
+    opacity:1;
+
+    animation:
+    glowChaos .6s infinite alternate,
+    drift .9s infinite linear;
+}
+
+/* fast shimmer */
+
+.sidebar a:hover::after{
+    animation:shine .45s infinite linear;
+}
+
+/* TEXT BREAKING */
+
+.sidebar a:hover span{
+    animation:
+    textFreak .07s infinite,
+    blurFlash .25s infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes insaneGlitch{
+
+    0%{
+        transform:
+        translate(0px,0px)
+        rotate(-1deg)
+        scale(1.04);
+    }
+
+    20%{
+        transform:
+        translate(-2px,1px)
+        rotate(.5deg)
+        scale(1.06);
+    }
+
+    40%{
+        transform:
+        translate(2px,-1px)
+        rotate(-0.8deg)
+        scale(1.03);
+    }
+
+    60%{
+        transform:
+        translate(-1px,-2px)
+        rotate(1deg)
+        scale(1.07);
+    }
+
+    80%{
+        transform:
+        translate(2px,2px)
+        rotate(-1deg)
+        scale(1.04);
+    }
+
+    100%{
+        transform:
+        translate(-2px,1px)
+        rotate(.7deg)
+        scale(1.05);
+    }
+}
+
+@keyframes textFreak{
+
+    0%{
+        transform:translate(0);
+    }
+
+    25%{
+        transform:translate(-2px,1px) skewX(4deg);
+    }
+
+    50%{
+        transform:translate(2px,-1px) skewX(-5deg);
+    }
+
+    75%{
+        transform:translate(-1px,-2px);
+    }
+
+    100%{
+        transform:translate(1px,1px);
+    }
+}
+
+@keyframes blurFlash{
+
+    0%,100%{
+        filter:blur(0px);
+        opacity:1;
+    }
+
+    50%{
+        filter:blur(.8px);
+        opacity:.82;
+    }
+}
+
+@keyframes glowChaos{
+
+    from{
+        transform:scale(1);
+        opacity:.18;
+    }
+
+    to{
+        transform:scale(1.25);
+        opacity:.42;
+    }
+}
+
+@keyframes drift{
+
+    0%{
+        transform:translateX(-10px);
+    }
+
+    100%{
+        transform:translateX(10px);
+    }
+}
+
+@keyframes pulseMadness{
+
+    0%,100%{
+        box-shadow:
+        0 0 12px rgba(237,100,245,.18),
+        0 0 24px rgba(237,100,245,.15);
+    }
+
+    50%{
+        box-shadow:
+        0 0 26px rgba(237,100,245,.35),
+        0 0 50px rgba(237,100,245,.22);
+    }
+}
+
+@keyframes shine{
+
+    to{
+        transform:translateX(220%) skewX(-20deg);
+    }
+}
 a:hover{
     color:#fff;
 
@@ -714,8 +881,6 @@ scene.addEventListener("mouseleave", () => {
 const audio = document.getElementById("bgMusic");
 
 const songs = [
-"bgmusic/bgmusic_smiths.mp3",
-"bgmusic/bgmusic_parttime.mp3",
 "bgmusic/bgmusic_swamped.mp3"
 ];
 
