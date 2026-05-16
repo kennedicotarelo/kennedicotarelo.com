@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>kennedi [about]</title>
+<link rel="icon" type="image/x-icon" href="images/tablogo.ico">
+
+<style>
+
+:root{
+    --pink:#ED64F5;
+    --purple:#43256E;
+    --dark:#13022D;
+}
+
+/* ---------------- BODY ---------------- */
+
+body{
+    margin:0;
+    padding:0;
+
+background:
+  linear-gradient(
+    90deg,
+    rgba(244,182,216,0.15),
+    rgba(216,196,255,0.15)
+  ),
+  url("images/backgrouund.gif") repeat 0 0 / 120px 120px;
+    font-family: Verdana, sans-serif;
+    color:#fceaff;
+
+    cursor:url("images/cursor.webp") 32 32, auto;
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.container{
+    width:900px;
+    max-width:95%;
+    margin:auto;
+
+    background:rgba(19,2,45,0.45);
+
+    border:2px solid rgba(237,100,245,0.4);
+
+    box-shadow:
+    0 0 30px rgba(237,100,245,0.25);
+
+    backdrop-filter:blur(8px);
+    border-radius:18px;
+
+    overflow:hidden;
+}
+
+/* ---------------- TOPBAR ---------------- */
+
+.topbar{
+    background:rgba(19,2,45,0.7);
+    padding:10px 15px;
+    font-size:13px;
+    border-bottom:1px solid rgba(237,100,245,0.25);
+}
+
+/* ---------------- HEADER ---------------- */
+
+.header{
+    text-align:center;
+    padding:35px 20px;
+
+    background:
+    linear-gradient(
+    to right,
+    rgba(67,37,110,0.6),
+    rgba(237,100,245,0.25)
+    );
+    padding:15px 10px;
+    border-bottom:1px solid rgba(237,100,245,0.3);
+}
+
+.header h1{
+    user-select: none;
+    margin:0;
+    font-size:42px;
+    color:#fff;
+
+    text-shadow:
+    0 0 12px rgba(237,100,245,0.7);
+
+    transition:0.25s ease;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.header h1:hover{
+    transform:scale(1.05);
+}
+
+.status{
+    margin-top:8px;
+    font-size:13px;
+    color:#d7bfff;
+}
+
+/* ---------------- FLEX LAYOUT ---------------- */
+
+a{
+    color:#ff6fb0;
+    text-decoration:none;
+    transition:0.2s ease;
+}
+
+a:hover{
+    color:#ffffff;
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ff6fb0;
+}
+
+.content{
+    display:flex;
+}
+
+.sidebar{
+    width:200px;
+
+    background:rgba(19,2,45,0.45);
+
+    padding:20px;
+
+    border-right:1px solid rgba(237,100,245,0.2);
+}
+
+.sidebar h3{
+    color:#ED64F5;
+    margin-top:0;
+}
+
+.sidebar ul{
+    list-style:none;
+    padding:0;
+}
+
+.sidebar li{
+    margin:12px 0;
+}
+
+.sidebar a{
+    display:block;
+
+    text-decoration:none;
+    color:#fff;
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+    transition:0.25s;
+}
+
+.sidebar a:hover{
+    background:#43256E;
+
+    transform:scale(1.04);
+
+    text-shadow:
+    0 0 12px rgba(255,255,255,0.7);
+}
+
+a:hover{
+    color:#fff;
+
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ED64F5,
+    0 0 20px rgba(237,100,245,0.8);
+}
+
+/* ---------------- MAIN ---------------- */
+
+main{
+    flex:1;
+    padding:25px;
+
+    background:
+    rgba(67,37,110,0.35);
+}
+
+/* ---------------- BOX ---------------- */
+
+.box{
+    text-align:center;
+
+    background:rgba(255,243,250,0.12);
+
+    border:1px solid rgba(237,100,245,0.4);
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+
+    backdrop-filter:blur(6px);
+}
+
+/* ---------------- LINKS ---------------- */
+
+.lr-link{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.lr-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    width:0%;
+    height:1px;
+    background:rgba(199,92,255,0.9);
+    transition:width 0.4s ease;
+}
+
+.lr-link:hover::after{
+    width:100%;
+}
+
+/* ---------------- TOOLTIP ---------------- */
+
+.tooltip-link{
+    position:relative;
+}
+
+.tooltip-text{
+    visibility:hidden;
+    opacity:0;
+
+    transition:0.4s;
+
+    position:absolute;
+
+    bottom:125%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+     background: #43256E;
+
+    color: #fceaff;
+
+    padding:6px 10px;
+
+    border-radius:6px;
+
+    font-size:12px;
+
+    white-space:nowrap;
+}
+
+.tooltip-link:hover .tooltip-text{
+    visibility:visible;
+    opacity:1;
+}
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:800px){
+
+    .content{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:auto;
+        border-right:none;
+        border-bottom:1px solid rgba(237,100,245,0.2);
+    }
+
+}
+
+/* ---------------- COPYRIGHT BUTTON ---------------- */
+
+.hint-wrap {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* hide checkbox */
+.hint-wrap input {
+  display: none;
+}
+
+/* clickable (c) */
+.hint-toggle {
+user-select: none;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s ease;
+  font-size: 20px;
+  color: #F527B0;
+}
+
+.hint-toggle:hover {
+  color: #fff;
+}
+
+/* hidden text */
+.hint-text {
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(2px);
+  transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  position: relative;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.hint-wrap input:checked ~ .hint-text {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0px);
+  position: relative;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+        about
+    </div>
+
+    <div class="header">
+        <h1>♡ kennedi ♡</h1>
+    </div>
+
+    <div class="content">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <ul>
+                <li><a href="home.html">home</a></li>
+                <li><a href="games.html">games</a></li>
+                <li><a href="mods.html">mods</a></li>
+                <li><a href="software.html">software</a></li>
+                <li><a href="articles.html">articles</a></li>
+                <li><a href="gallery.html">gallery</a></li>
+                <li><a href="about.html">about</a></li>
+            </ul>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main>
+
+            <div class="box">
+<div style="text-align: center; margin: 10px;">
+<l>experiments, and fragments of ideas—some complete, some still unfolding. each project is part exploration, part expression, built inside the systems of games and gently pushed beyond them.</l>
+<br>
+<br>
+<l>i primarily create games and mods, alongside writing in areas such as storytelling and philosophy. i also have experience in directing from past projects, as well as a strong background in audio engineering. earlier, i worked extensively with web and programming including c#, c++, and LUA, although my current focus has shifted more toward creative work. overall i love creating feelings through experiences, originally since age of seven.</l>
+<br>
+<br>
+<l>sharing my 'art' downloadable in this site and art should stay as it is, not as a product.</l>
+<br>
+<br>
+<br>
+<br>
+<div class="hint-wrap">
+  <input type="checkbox" id="hint-toggle">
+
+  <label for="hint-toggle" class="hint-toggle" id="playButton"><strong>©</strong></label>
+
+  <span class="hint-text">
+     2026 kennedi monika cotarelo / defectus® everything here is made with intention and care, and is meant to be experienced only in its original form on this site. my work is exclusive to this website-any version found elsewhere has not been shared or authorized by me. please do not reupload, redistribute, alter, or remix any part of this content without permission. all third-party materials remain the property of their respective creators. i do not have any other accounts.<br>
+  </span>
+</div>
+
+
+    <audio id="audio" preload="auto">
+        <source src="buttonsound/cod4click.mp3" type="audio/mp3">
+    </audio>
+
+                <br>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script>
+
+/* COPYRIGHT BUTTON CLICK SOUND */
+
+        const audio = document.getElementById("audio");
+        const playButton = document.getElementById("playButton");
+
+        playButton.addEventListener("click", function() {
+            audio.play().catch(function(error) {
+                console.log("Error playing the audio:", error);
+            });
+        });
+
+
+/* HEADER MOODS */
+
+const title=document.querySelector(".header h1");
+const status=document.querySelector(".status");
+
+const moods=[
+["♡ kennedi m cotarelo ♡"],
+["♡ kennedicotarelo.com ♡"]
+];
+
+let moodIndex=0;
+
+title.addEventListener("click",()=>{
+
+    moodIndex=(moodIndex+1)%moods.length;
+
+    title.textContent=moods[moodIndex][0];
+
+    status.textContent=moods[moodIndex][1];
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+	<title>kennedi [404]</title>
+	<link rel="icon" type="image/x-icon" href="images/tablogo.ico">
+</head>
+<body>
+
+<div class="blob"></div>
+<div class="blob"></div>
+
+<div class="container">
+    <div>
+        <span class="digit" onclick="vanish(this)">4</span>
+        <span class="digit" onclick="vanish(this)">0</span>
+        <span class="digit" onclick="vanish(this)">4</span>
+    </div>
+    <p>either you've entered the wrong address accidentally</p>
+ <p>or you're trying be smart by seeking exploits to hack my site</p>
+    <button onclick="goHome()">i submit, take me back</button>
+</div>
+
+<script>
+function vanish(el) {
+    el.classList.add("gone");
+}
+
+function goHome() {
+    window.location.href = "/";
+}
+</script>
+
+</body>
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: black;
+    color: #ff66cc;
+    font-family: Tahoma, Verdana, Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    text-align: center;
+    padding: 30px;
+    border: 1px solid #ff66cc;
+    background: #000;
+    min-width: 300px;
+}
+
+/* Each digit */
+.digit {
+    font-size: 80px;
+    display: inline-block;
+    cursor: pointer;
+    animation: flicker 1s infinite;
+    transition: transform 0.2s;
+}
+
+.digit:hover {
+    transform: scale(1.1);
+}
+
+/* Disappear animation */
+.digit.gone {
+    animation: disappear 0.5s forwards;
+}
+
+@keyframes disappear {
+    to {
+        opacity: 0;
+        transform: scale(0.2);
+    }
+}
+
+p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #ffb3dd;
+}
+
+button {
+    margin-top: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    background: #f2c6e6;
+    border: 1px solid #cc99bb;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e6a9d6;
+}
+
+@keyframes flicker {
+    0% { opacity: 1; }
+    50% { opacity: 0.85; }
+    100% { opacity: 1; }
+}
+body {
+  cursor: url("images/cursor.webp") 32 32, auto;
+}
+</style>
+</html>
