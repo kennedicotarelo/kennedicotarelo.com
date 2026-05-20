@@ -359,25 +359,7 @@ main{
 
             <div class="box">
 
-                [<a href="https://steamcommunity.com/id/chasingthoughts/" class="lr-link soundLink tooltip-link">
-                <span class="tooltip-text">steam</span>
-                gaming
-                </a>]
-
-                [<a href="https://www.youtube.com/@kennedimcotarelo" class="lr-link soundLink1 tooltip-link">
-                <span class="tooltip-text">youtube</span>
-                music
-                </a>]
-
-                [<a href="https://gamebanana.com/members/5495180" class="lr-link soundLink tooltip-link">
-                <span class="tooltip-text">gamebanana</span>
-                modding
-                </a>]
-
-                [<a href="https://github.com/angelchoir" class="lr-link soundLink tooltip-link">
-                <span class="tooltip-text">github</span>
-                software
-                </a>]
+		welcome
 
             </div>
 
@@ -395,12 +377,6 @@ main{
 
 </div>
 
-<!-- AUDIO -->
-
-<audio id="bgMusic" loop></audio>
-
-<audio id="sound" src="buttonsound/bloodlines.mp3"></audio>
-<audio id="sound1" src="buttonsound/hill.mp3"></audio>
 
 <script>
 
@@ -446,56 +422,6 @@ document.body.style.backgroundImage = `url('${gif}')`;
 document.body.style.backgroundSize = "cover";
 document.body.style.backgroundPosition = "center";
 
-
-/* BUTTON SOUND */
-
-document.querySelectorAll(".soundLink").forEach(link=>{
-
-    link.addEventListener("click", function(e){
-
-        e.preventDefault();
-
-        const sound=document.getElementById("sound");
-
-        sound.currentTime=0;
-
-        sound.play().then(()=>{
-
-            setTimeout(()=>{
-
-                window.location.href=link.href;
-
-            },300);
-
-        });
-
-    });
-
-});
-
-document.querySelectorAll(".soundLink1").forEach(link=>{
-
-    link.addEventListener("click", function(e){
-
-        e.preventDefault();
-
-        const sound=document.getElementById("sound1");
-
-        sound.currentTime=0;
-
-        sound.play().then(()=>{
-
-            setTimeout(()=>{
-
-                window.location.href=link.href;
-
-            },300);
-
-        });
-
-    });
-
-});
 
 /* HEADER MOODS */
 
