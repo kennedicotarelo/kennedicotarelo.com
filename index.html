@@ -76,8 +76,11 @@ body{
     inset:0;
 
     background:
-    url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-
+    url("images/bg1.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     opacity:.16;
 
     mix-blend-mode:screen;
@@ -315,62 +318,6 @@ body{
 }
 
 /* =========================================
-   FOOTER
-========================================= */
-
-.footer{
-
-    position:absolute;
-
-    bottom:20px;
-    left:30px;
-
-    font-size:.8rem;
-
-    letter-spacing:2px;
-
-    color:#555;
-
-    z-index:5;
-}
-
-.flash{
-
-    position:fixed;
-    inset:0;
-
-    background:white;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    mix-blend-mode:overlay;
-
-    animation:flash 10s infinite;
-}
-
-@keyframes flash{
-
-    0%,94%,100%{
-        opacity:0;
-    }
-
-    95%{
-        opacity:.03;
-    }
-
-    96%{
-        opacity:.08;
-    }
-
-    97%{
-        opacity:.01;
-    }
-
-}
-
-/* =========================================
    MOBILE
 ========================================= */
 
@@ -478,10 +425,6 @@ body{
 
     </aside>
 
-</div>
-
-<div class="footer">
-    kennedicotarelo.com
 </div>
 
 <!-- AUDIO -->
