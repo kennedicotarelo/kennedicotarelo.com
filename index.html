@@ -81,7 +81,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity:.16;
+    opacity:.;
 
     mix-blend-mode:screen;
 
@@ -368,6 +368,48 @@ opacity:.22;
 
 }
 
+<!-- =========================================
+     SPINNING SYMBOL
+========================================= -->
+
+    .logo-container {
+        position: relative;
+        width: 280px;
+        height: 280px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+.logo {
+    animation: spin 90s linear infinite;
+    opacity: 0.100;
+    filter: brightness(0.9);
+}
+
+    /* Optional ambient ring */
+    .logo-container::before {
+        content: "";
+        position: absolute;
+        inset: -30px;
+        border-radius: 50%;
+        background:
+            radial-gradient(circle,
+                rgba(255,255,255,0.04),
+                transparent 70%);
+        z-index: -1;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+
 </style>
 </head>
 
@@ -460,6 +502,9 @@ opacity:.22;
 
     </aside>
 
+</div>
+<div class="logo-container">
+    <img src="images/halospin.png" alt="Logo" class="logo">
 </div>
 
 <!-- AUDIO -->
