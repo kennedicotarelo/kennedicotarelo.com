@@ -191,7 +191,7 @@ main{
 /* ---------------- BOX ---------------- */
 
 .box{
-    text-align:left;
+    text-align:center;
 
     background:rgba(255,243,250,0.12);
 
@@ -284,6 +284,25 @@ main{
 
 }
 
+.blink-text {
+  text-align: center;
+  font-size: 18px;
+  color: rgba(186, 85, 211, 4);
+  animation: softBlink 3s ease-in-out infinite;
+}
+
+@keyframes softBlink {
+  0%, 100% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  50% {
+    opacity: 2;
+  color: rgba(120, 200, 255, 2);
+    filter: blur(0.5px);
+  }
+}
+
 
 </style>
 </head>
@@ -293,6 +312,7 @@ main{
 <div class="container">
 
     <div class="topbar">
+        articles
     </div>
 
     <div class="header">
@@ -305,8 +325,14 @@ main{
 
         <aside class="sidebar">
 
+
             <ul>
-                <li><a href="index.html">home</a></li>
+                <li><a href="games.html">games</a></li>
+                <li><a href="mods.html">mods</a></li>
+                <li><a href="software.html">software</a></li>
+                <li><a href="articles.html">articles</a></li>
+                <li><a href="gallery.html">gallery</a></li>
+                <li><a href="about.html">about</a></li>
             </ul>
 
         </aside>
@@ -315,22 +341,24 @@ main{
 
         <main>
 
-	<div class="box">
-	      <l>'A Culture Built on Attention'</l>
-		<br>
-	      <i style="font-size: 12px;">5/9/2026</i>
-	</div>
+            <div class="box">
+
+              <b>articles</b>
+
+            </div>
 
             <div class="box">
-<p> We all remember the former owner of the highest Steam level. It became a perfect example of how some people are willing to scam others, even when they already seem to have a better life than most. It showed just how toxic people can become when status and attention are involved.</p>
-<p>I’ve also noticed that many people pay to increase their steam level simply to attract attention—especially on profile showcases and boards. these days, a lot of girls seem more focused on presenting themselves through using their pictures on artwork than actually playing games. Often, the closest thing to gaming they engage with is competitive online titles. Meanwhile, many men's profiles are overloaded with anime themes, which can feel excessive and cringe when overdone, here's a fun fact about it: this often affects their relationship in a negative way.
-</p>
-<p>What frustrates me most is how different things were back in the 2010s. Back then, I was bullied for being a gamer girl. Now gamer culture is everywhere, but instead of genuine passion for games, many people seem to use gaming spaces mainly for attention and validation. In a way, it makes those difficult years feel wasted, because the culture that once rejected us has now become shallow and performative.</p>
-<br>
-<p>There are many examples of a similar situations in other platforms.</p>
-<br>
 
-     <br><br>
+<div style="text-align: center;">
+<u><h3 class="blink-text">2026</h3></u>
+<a href="toxicityofourcity.html" target="_self">Toxicity of Our City</a>
+<br><br>
+<a href="aculturebuiltonattention.html" target="_self">A Culture Built on Attention</a>
+<br><br>
+<a href="thefadeofcompleteworlds.html" target="_self">The Fade of Complete Worlds</a>
+                <br><br>
+
+                <br>
 
             </div>
 

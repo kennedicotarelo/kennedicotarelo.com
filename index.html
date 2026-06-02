@@ -20,7 +20,7 @@
 body{
     overflow:hidden;
     background:#000;
-    font-family:'Oswald', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
     height:100vh;
     color:white;
 
@@ -32,39 +32,16 @@ body{
 ========================================= */
 
 .bg{
-    position:fixed;
-    inset:0;
-
-    background:
-    linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.88)),
-    url("");
-
-    background-size:cover;
-    background-position:center;
-
-    filter:
-    grayscale(100%)
-    contrast(120%);
-
-    animation:bgMove 12s ease-in-out infinite alternate;
-
-    transform:scale(1.05);
+    animation:bgIntro 4s ease forwards;
 }
 
-@keyframes bgMove{
-
+@keyframes bgIntro{
     from{
-        transform:
-        scale(1.05)
-        translateX(-10px);
+        transform:scale(1.12);
     }
-
     to{
-        transform:
-        scale(1.1)
-        translateX(10px);
+        transform:scale(1.05);
     }
-
 }
 
 /* =========================================
@@ -76,12 +53,12 @@ body{
     inset:0;
 
     background:
-    url("images/bg1.gif");
+    url("images/bg1.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity:.70;
+    opacity:.30;
 
     mix-blend-mode:screen;
 
@@ -116,47 +93,6 @@ body{
     z-index:99999;
 
     transition:1s;
-}
-
-.welcomeBox{
-
-    width:300px;
-    max-width:90%;
-
-    text-align:center;
-
-    padding:40px;
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    background:
-    rgba(0,0,0,.45);
-
-    backdrop-filter:blur(6px);
-
-    animation:flicker 5s infinite;
-}
-
-.welcomeBox h1{
-
-    font-size:3rem;
-    font-weight:300;
-
-    letter-spacing:8px;
-
-    margin-bottom:15px;
-
-    color:#fff;
-
-    text-shadow:
-    0 0 10px rgba(255,255,255,.2);
-}
-
-.welcomeBox p{
-    color:#888;
-    margin-bottom:25px;
-    letter-spacing:2px;
 }
 
 #enterBtn{
@@ -385,9 +321,9 @@ opacity:.22;
     animation: spin 90s linear infinite;
     opacity: 0.100;
     filter: brightness(0.9);
+    pointer-events:none;
 }
 
-    /* Optional ambient ring */
     .logo-container::before {
         content: "";
         position: absolute;
@@ -410,6 +346,310 @@ opacity:.22;
     }
 
 
+
+/* =========================================
+   SIDE PAGES
+========================================= */
+
+.page{
+
+    position:fixed;
+
+    scrollbar-width:none;
+    -ms-overflow-style:none; 
+
+    top:0;
+    right:0;
+
+    width:65%;
+    height:100vh;
+    overflow-y:auto;
+
+    overflow-y:auto;
+
+    transform:translateX(100%);
+
+    transition:
+    transform .25s ease;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(0,0,0,.10),
+        rgba(0,0,0,.20)
+    );
+
+    border-left:
+    1px solid rgba(255,255,255,.04);
+
+    box-shadow:
+    -20px 0 80px rgba(255,255,255,.015);
+
+    z-index:50;
+
+}
+
+.page::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.page.active{
+
+    transform:translateX(0);
+
+}
+
+/* subtle glass */
+
+.page::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(255,255,255,.025),
+        rgba(255,255,255,0)
+    );
+
+    pointer-events:none;
+
+}
+
+/* content */
+
+.pageContent{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:80px;
+
+    color:#d7d7d7;
+
+    line-height:1.9;
+
+}
+
+/* titles */
+
+.page h1{
+
+    font-size:3rem;
+
+    font-weight:300;
+
+    letter-spacing:8px;
+
+    margin-bottom:30px;
+
+    color:#f4f4f4;
+
+    opacity:.92;
+
+    text-transform:lowercase;
+
+}
+
+/* text */
+
+.page p{
+
+    color:
+    rgba(255,255,255,.75);
+
+    font-size:1rem;
+
+}
+
+/* subtle x */
+
+.closePage{
+
+    position:absolute;
+
+    top:25px;
+    right:25px;
+
+    background:none;
+
+    border:none;
+
+    color:
+    rgba(255,255,255,.18);
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+    z-index:100;
+
+}
+
+.closePage:hover{
+
+    color:
+    rgba(255,255,255,.6);
+
+}
+
+/* scrollbar */
+
+.page::-webkit-scrollbar{
+
+    width:4px;
+
+}
+
+.page::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.page::-webkit-scrollbar-thumb{
+
+    background:
+    rgba(255,255,255,.12);
+
+}
+
+.page::-webkit-scrollbar-thumb:hover{
+
+    background:
+    rgba(255,255,255,.28);
+
+}
+
+.box{
+    text-align:center;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+}
+
+/* ---------------- LINK STYLE ---------------- */
+
+.lr-link{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.lr-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    width:0%;
+    height:1px;
+    background:rgba(199,92,255,0.9);
+    transition:width 0.4s ease;
+}
+
+.lr-link:hover::after{
+    width:100%;
+}
+
+a{
+    color:#ff6fb0;
+    text-decoration:none;
+    transition:0.2s ease;
+}
+
+a:hover{
+    color:#ffffff;
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ff6fb0;
+}
+
+/* ---------------- IMAGE ---------------- */
+
+.center-img{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-top:20px;
+}
+
+.center-img img{
+    width:400px;
+    max-width:100%;
+
+    border-radius:14px;
+
+    opacity:0.9;
+
+    box-shadow:
+    0 0 24px rgba(237,100,245,0.35);
+}
+
+/* ---------------- COPYRIGHT BUTTON ---------------- */
+
+.hint-wrap {
+  text-align: center;
+  font-size: 12px;
+  color: #aaa;
+  line-height: 1.6;
+  position: relative;
+}
+
+/* hide checkbox */
+.hint-wrap input {
+  display: none;
+}
+
+/* clickable (c) */
+.hint-toggle {
+user-select: none;
+  cursor: pointer;
+  color: #ccc;
+  transition: color 0.3s ease;
+  font-size: 20px;
+  color: #F527B0;
+}
+
+.hint-toggle:hover {
+  color: #fff;
+}
+
+/* hidden text */
+.hint-text {
+  display: inline-block;
+  margin-left: 6px;
+  opacity: 0;
+  filter: blur(6px);
+  transform: translateY(2px);
+  transition: opacity 0.4s ease, filter 0.4s ease, transform 0.4s ease;
+  pointer-events: none;
+  position: relative;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.hint-wrap input:checked ~ .hint-text {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateY(0px);
+  position: relative;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
 </style>
 </head>
 
@@ -428,11 +668,7 @@ opacity:.22;
 
 <div id="welcomeScreen">
 
-    <div class="welcomeBox" id="enterBox">
-
-        <p>
-            kennedicotarelo.com
-        </p>
+    <div id="enterBox">
 
         <button id="enterBtn">
             get psyched
@@ -458,42 +694,42 @@ opacity:.22;
 
             <li>
                 <a class="soundLink1"
-                href="games.html">
+                data-page="games">
                 games
                 </a>
             </li>
 
             <li>
                 <a class="soundLink1"
-                href="mods.html">
+                data-page="mods">
                 mods
                 </a>
             </li>
 
             <li>
                 <a class="soundLink1"
-                href="software.html">
+                data-page="software">
                 software
                 </a>
             </li>
 
             <li>
                 <a class="soundLink1"
-                href="articles.html">
+                data-page="articles">
                 articles
                 </a>
             </li>
 
             <li>
                 <a class="soundLink1"
-                href="gallery.html">
+                data-page="gallery">
                 gallery
                 </a>
             </li>
 
             <li>
                 <a class="soundLink1"
-                href="about.html">
+                data-page="about">
                 about
                 </a>
             </li>
@@ -507,16 +743,166 @@ opacity:.22;
     <img src="images/halospin.png" alt="Logo" class="logo">
 </div>
 
+
+<div id="pages">
+<section id="games" class="page"><button class="closePage">✕</button><h1>games</h1><div style="height:2000px">
+
+            <div class="box">
+	<h3>official games</h3>
+<br>
+<a href="destroy.html" target="_self"><l>Destroy: Rebuilt Complete Edition</h3></l></a>
+<br><br>
+<a href="tenebrific.html" target="_self"><l>Tenebrific - The Dark Hope</hp></l></a>
+<br><br><br>
+	<h3>misc games</h3>
+<br>
+<a href="" target="_self"><l>Hale & Pace Visual Novel Test</hp></l></a>
+<br><br>
+<a href="" target="_self"><l>Penumbra Black Plague Demo (Flash Version)</hp></l></a>
+<br><br>
+<br><br>
+                <br><br>
+
+            </div>
+
+</div></section>
+<section id="mods" class="page"><button class="closePage">✕</button><h1>mods</h1><div style="height:2000px">
+
+           <div class="box">
+
+		<div style="text-align: center;">
+	<h3 class="blink-text">half-life mods</h3>
+<a href="" target="_self">Kiddin' gSource</a>
+<br><br>
+<a href="" target="_self">Half-Life: Lambda Collection Remaster</a>
+<br><br>
+<a href="" target="_self">Counter-Strike Purple</a>
+<br><br>
+<a href="" target="_self">Vampire Slayer: Chapter VII</a>
+<br><br>
+	<h3 class="blink-text">half-life addons</h3>
+<a href="https://gamebanana.com/mods/677767" target="_self">Cute Sven Co-op Weapon Pack</a>
+<br><br>
+<a href="" target="_self">Destroy Legacy Replacement Pack</a>
+<br><br>
+<a href="https://gamebanana.com/mods/680161" target="_self">Cirno Gauss Hand</a>
+<br><br>
+	<h3 class="blink-text">goldsrc maps</h3>
+<a href="https://gamebanana.com/mods/679724" target="_self">pitilesscensors</a>
+<br><br>
+<a href="https://gamebanana.com/mods/679306" target="_self">black mesa 2020</a>
+<br><br>
+<a href="https://gamebanana.com/mods/678916" target="_self">montparnasse</a>
+<br><br>
+<a href="https://gamebanana.com/mods/677749" target="_self">calmnight</a>
+<br><br>
+<a href="https://gamebanana.com/mods/677756" target="_self">comfymental</a>
+<br><br>
+<a href="https://gamebanana.com/mods/677954" target="_self">emptysickness</a>
+<br><br>
+<a href="https://gamebanana.com/mods/678474" target="_self">livelysickness</a>
+<br><br>
+<a href="https://gamebanana.com/mods/677811" target="_self">safecabin</a>
+<br><br>
+<a href="https://gamebanana.com/mods/677769" target="_self">majortom</a>
+<br><br>
+<a href="https://gamebanana.com/mods/677781" target="_self">fm_lobby (tfc)</a>
+<br><br>
+<a href="https://gamebanana.com/mods/677890" target="_self">fm_safecabin (tfc)</a>
+<br><br>
+	<h3 class="blink-text">counter-strike addons</h3>
+<a href="" target="_self">Modern Warfare Weapon Pack (Female Hands)</a>
+                <br><br>
+
+            </div>
+
+
+</div></section>
+<section id="software" class="page"><button class="closePage">✕</button><h1>software</h1><div style="height:2000px">
+
+            <div class="box">
+
+		<div style="text-align: center;">
+	<h3 class="blink-text">chatting</h3>
+<a href="kedr.html" target="_self">Kedr Desktop Client</a>
+                <br><br>
+
+                <br><br>
+
+            </div>
+
+</div></section>
+<section id="articles" class="page"><button class="closePage">✕</button><h1>articles</h1><div style="height:2000px">
+
+            <div class="box">
+
+<div style="text-align: center;">
+<h3 class="blink-text">2026</h3>
+<a href="toxicityofourcity.html" target="_self">Toxicity of Our City</a>
+<br><br>
+<a href="aculturebuiltonattention.html" target="_self">A Culture Built on Attention</a>
+<br><br>
+<a href="thefadeofcompleteworlds.html" target="_self">The Fade of Complete Worlds</a>
+                <br><br>
+
+                <br>
+
+            </div>
+
+</div></section>
+<section id="gallery" class="page"><button class="closePage">✕</button><h1>gallery</h1><div style="height:2000px">
+
+            <div class="box">
+
+		'<a href=https://www.youtube.com/watch?v=8PAFJwhTPx8>fading life</a>' cover without title
+            <div class="center-img">
+                <img src="images/fadinglifeoriginal.jpg">
+            </div>
+                <br><br>
+
+            </div>
+
+</div></section>
+<section id="about" class="page"><button class="closePage">✕</button><h1>about</h1><div style="height:2000px">
+
+           <div class="box">
+<div style="text-align: center; margin: 10px;">
+<l>experiments, and fragments of ideas—some complete, some still unfolding. each project is part exploration, part expression, built inside the systems of games and gently pushed beyond them.</l>
+<br>
+<br>
+<l>i primarily create games and mods, alongside writing in areas such as storytelling and philosophy. i also have experience in directing from past projects, as well as a strong background in audio engineering. earlier, i worked extensively with web and programming including c#, c++, and LUA, although my current focus has shifted more toward creative work. overall i love creating feelings through experiences, originally since age of seven.</l>
+<br>
+<br>
+<l>sharing my 'art' downloadable in this site and art should stay as it is, not as a product.</l>
+<br>
+<br>
+<br>
+<br>
+<div class="hint-wrap">
+  <input type="checkbox" id="hint-toggle">
+
+  <label for="hint-toggle" class="hint-toggle"><strong>©</strong></label>
+
+  <span class="hint-text">
+     2026 kennedi monika cotarelo / defectus® everything here is made with intention and care, and is meant to be experienced only in its original form on this site. my work is exclusive to this website-any version found elsewhere has not been shared or authorized by me. please do not reupload, redistribute, alter, or remix any part of this content without permission. all third-party materials remain the property of their respective creators.<br>
+  </span>
+</div>
+
+</div></section>
+
+</div>
+
 <!-- AUDIO -->
+
 
 <audio id="bgMusic" loop></audio>
 
 <audio id="sound"
-src="buttonsound/bloodlines.mp3">
+src="buttonsound/psyched.mp3">
 </audio>
 
 <audio id="sound1"
-src="buttonsound/hill.mp3">
+src="buttonsound/itempickup.mp3">
 </audio>
 
 <script>
@@ -537,34 +923,56 @@ document.getElementById("enterBtn");
 const container =
 document.querySelector(".container");
 
-enterBtn.addEventListener("click",()=>{
+/* FIRST VISIT CHECK */
 
-    const sound =
-    document.getElementById("sound");
+if(localStorage.getItem("enteredSite")){
 
-    sound.volume = 0.7;
+    welcomeScreen.style.display = "none";
 
-    sound.currentTime = 0;
+    container.style.opacity = "1";
 
-    sound.play().catch(()=>{});
+}else{
 
-    enterBox.classList.add("welcomeExit");
+    enterBtn.addEventListener("click",()=>{
 
-    setTimeout(()=>{
+        localStorage.setItem(
+            "enteredSite",
+            "true"
+        );
 
-        welcomeScreen.classList.add("welcomeFade");
+        const sound =
+        document.getElementById("sound");
 
-        container.style.opacity = "1";
+        sound.volume = 0.7;
 
-    },850);
+        sound.currentTime = 0;
 
-    setTimeout(()=>{
+        sound.play().catch(()=>{});
 
-        welcomeScreen.remove();
+        enterBox.classList.add(
+            "welcomeExit"
+        );
 
-    },1800);
+        setTimeout(()=>{
 
-});
+            welcomeScreen.classList.add(
+                "welcomeFade"
+            );
+
+            container.style.opacity =
+            "1";
+
+        },850);
+
+        setTimeout(()=>{
+
+            welcomeScreen.remove();
+
+        },1800);
+
+    });
+
+}
 
 /* =========================================
    RANDOM BACKGROUND
@@ -718,19 +1126,25 @@ document.querySelectorAll(".soundLink1").forEach(link=>{
 
         sound.currentTime = 0;
 
-        sound.play().then(()=>{
+        sound.play().catch(()=>{});
 
-            setTimeout(()=>{
+        document
+        .querySelectorAll(".page")
+        .forEach(page=>{
 
-                window.location.href =
-                link.href;
-
-            },300);
+            page.classList.remove("active");
 
         });
 
+        document
+        .getElementById(link.dataset.page)
+        .classList.add("active");
+
     });
 
+});
+document.querySelectorAll('.closePage').forEach(btn=>{
+ btn.addEventListener('click',()=>btn.closest('.page').classList.remove('active'));
 });
 
 </script>
