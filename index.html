@@ -58,7 +58,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    opacity:.40;
+    opacity:.70;
 
     mix-blend-mode:screen;
 
@@ -668,6 +668,47 @@ user-select: none;
   line-height: 1.5;
 }
 
+/* ---------------- ROSE RAIN ---------------- */
+
+#rose-snow {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1; /* adjust as needed */
+}
+
+.rose-petal {
+    position: absolute;
+    top: -20px;
+    width: 10px;
+    height: 14px;
+    border-radius: 50% 0 50% 50%;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 170, 190, 0.7),
+        rgba(220, 40, 80, 0.7)
+    );
+    opacity: 0.35;
+    filter: blur(0.2px);
+    animation: roseFall linear forwards;
+}
+
+@keyframes roseFall {
+    from {
+        transform:
+            translateY(-20px)
+            translateX(0)
+            rotate(0deg);
+    }
+    to {
+        transform:
+            translateY(110vh)
+            translateX(var(--drift))
+            rotate(var(--spin));
+    }
+}
+
 </style>
 </head>
 
@@ -699,6 +740,8 @@ user-select: none;
 <!-- =========================================
      MENU
 ========================================= -->
+
+<div id="rose-snow"></div>
 
 <div class="container">
 
@@ -929,6 +972,47 @@ src="buttonsound/picked.mp3">
 </audio>
 
 <script>
+
+/* =========================================
+   ROSE SNOW
+========================================= */
+
+const roseSnow = document.getElementById("rose-snow");
+
+function createPetal() {
+    const petal = document.createElement("div");
+    petal.className = "rose-petal";
+
+    const size = 6 + Math.random() * 8;
+
+    petal.style.width = size + "px";
+    petal.style.height = size * 1.4 + "px";
+
+    petal.style.left = Math.random() * 100 + "vw";
+
+    const duration = 8 + Math.random() * 8;
+
+    petal.style.animationDuration = duration + "s";
+
+    petal.style.setProperty(
+        "--drift",
+        (Math.random() * 120 - 60) + "px"
+    );
+
+    petal.style.setProperty(
+        "--spin",
+        (Math.random() * 180 - 90) + "deg"
+    );
+
+    roseSnow.appendChild(petal);
+
+    petal.addEventListener("animationend", () => {
+        petal.remove();
+    });
+}
+
+/* Gentle snowfall */
+setInterval(createPetal, 300);
 
 /* =========================================
    WELCOME SCREEN
