@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>kennedi [articles]</title>
+<link rel="icon" type="image/x-icon" href="images/tablogo.ico">
+
+<style>
+
+:root{
+    --pink:#ED64F5;
+    --purple:#43256E;
+    --dark:#13022D;
+}
+
+/* ---------------- BODY ---------------- */
+
+body{
+    margin:0;
+    padding:0;
+
+background:
+  linear-gradient(
+    90deg,
+    rgba(244,182,216,0.15),
+    rgba(216,196,255,0.15)
+  ),
+  url("images/backgrouund.gif") repeat 0 0 / 120px 120px;
+
+    font-family: Verdana, sans-serif;
+    color:#fceaff;
+
+    cursor:url("images/cursor.webp") 32 32, auto;
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.container{
+    width:900px;
+    max-width:95%;
+    margin:auto;
+
+    background:rgba(19,2,45,0.45);
+
+    border:2px solid rgba(237,100,245,0.4);
+
+    box-shadow:
+    0 0 30px rgba(237,100,245,0.25);
+
+    backdrop-filter:blur(8px);
+    border-radius:18px;
+
+    overflow:hidden;
+}
+
+/* ---------------- TOPBAR ---------------- */
+
+.topbar{
+    background:rgba(19,2,45,0.7);
+    padding:10px 15px;
+    font-size:13px;
+    border-bottom:1px solid rgba(237,100,245,0.25);
+}
+
+/* ---------------- HEADER ---------------- */
+
+.header{
+    text-align:center;
+    padding:35px 20px;
+
+    background:
+    linear-gradient(
+    to right,
+    rgba(67,37,110,0.6),
+    rgba(237,100,245,0.25)
+    );
+    padding:15px 10px;
+    border-bottom:1px solid rgba(237,100,245,0.3);
+}
+
+.header h1{
+    user-select: none;
+    margin:0;
+    font-size:42px;
+    color:#fff;
+
+    text-shadow:
+    0 0 12px rgba(237,100,245,0.7);
+
+    transition:0.25s ease;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.header h1:hover{
+    transform:scale(1.05);
+}
+
+.status{
+    margin-top:8px;
+    font-size:13px;
+    color:#d7bfff;
+}
+
+/* ---------------- FLEX LAYOUT ---------------- */
+
+a{
+    color:#ff6fb0;
+    text-decoration:none;
+    transition:0.2s ease;
+}
+
+a:hover{
+    color:#ffffff;
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ff6fb0;
+}
+
+.content{
+    display:flex;
+}
+
+.sidebar{
+    width:200px;
+
+    background:rgba(19,2,45,0.45);
+
+    padding:20px;
+
+    border-right:1px solid rgba(237,100,245,0.2);
+}
+
+.sidebar h3{
+    color:#ED64F5;
+    margin-top:0;
+}
+
+.sidebar ul{
+    list-style:none;
+    padding:0;
+}
+
+.sidebar li{
+    margin:12px 0;
+}
+
+.sidebar a{
+    display:block;
+
+    text-decoration:none;
+    color:#fff;
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+    transition:0.25s;
+}
+
+.sidebar a:hover{
+    background:#43256E;
+
+    transform:scale(1.04);
+
+    text-shadow:
+    0 0 12px rgba(255,255,255,0.7);
+}
+
+a:hover{
+    color:#fff;
+
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ED64F5,
+    0 0 20px rgba(237,100,245,0.8);
+}
+
+/* ---------------- MAIN ---------------- */
+
+main{
+    flex:1;
+    padding:25px;
+
+    background:
+    rgba(67,37,110,0.35);
+}
+
+/* ---------------- BOX ---------------- */
+
+.box{
+    text-align:left;
+
+    background:rgba(255,243,250,0.12);
+
+    border:1px solid rgba(237,100,245,0.4);
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+
+    backdrop-filter:blur(6px);
+}
+
+/* ---------------- LINKS ---------------- */
+
+.lr-link{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.lr-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    width:0%;
+    height:1px;
+    background:rgba(199,92,255,0.9);
+    transition:width 0.4s ease;
+}
+
+.lr-link:hover::after{
+    width:100%;
+}
+
+/* ---------------- TOOLTIP ---------------- */
+
+.tooltip-link{
+    position:relative;
+}
+
+.tooltip-text{
+    visibility:hidden;
+    opacity:0;
+
+    transition:0.4s;
+
+    position:absolute;
+
+    bottom:125%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+     background: #43256E;
+
+    color: #fceaff;
+
+    padding:6px 10px;
+
+    border-radius:6px;
+
+    font-size:12px;
+
+    white-space:nowrap;
+}
+
+.tooltip-link:hover .tooltip-text{
+    visibility:visible;
+    opacity:1;
+}
+
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:800px){
+
+    .content{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:auto;
+        border-right:none;
+        border-bottom:1px solid rgba(237,100,245,0.2);
+    }
+
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+    </div>
+
+    <div class="header">
+        <h1>♡ kennedi ♡</h1>
+    </div>
+
+    <div class="content">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <ul>
+                <li><a href="index.html">home</a></li>
+            </ul>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main>
+
+	<div class="box">
+	      <l>'Decline of Individuality'</l>
+		<br>
+	      <i style="font-size: 12px;">6/6/2026</i>
+	</div>
+
+            <div class="box">
+<p>I know the eastern, western, and central regions of the United States quite well, and one thing I have noticed is that there are plenty of so-called 'edgy kids' in many communities. If I had to point to places where this culture seems especially visible, I would mention Florida and California.</p>
+
+<p>Many of these young people frequently make poor decisions, often without fully understanding the consequences of their actions. It is a familiar stereotype: they attend parties, experiment with drugs, disregard advice from adults, and create tension with their parents. While not every teenager follows this path, the pattern has become a common cultural cliché.</p>
+
+<p>Another thing that stands out to me is their frequent use of the word 'bro.' Personally, I find it irritating because it often appears in almost every sentence. However, I do not think they necessarily use it because they particularly like the word itself. In many cases, it seems to function as a verbal habit or a social marker. Young people often adopt a limited set of expressions that become part of their group's identity, and words like 'bro' serve as an easy way to signal belonging and familiarity.</p>
+
+<p>What I find even more striking is the strong tendency toward imitation. Many seem desperate to copy one another's behavior, fashion, opinions, mannerisms, and vocabulary. Individuality often appears secondary to fitting in with a particular social group or trend. As a result, it can sometimes feel as though originality is becoming increasingly rare, with the same attitudes and expressions repeated across different circles.</p>
+
+<p>I have also noticed what appears to be a lack of general knowledge among some of these individuals. For example, if asked to identify countries on a map or discuss basic historical events, many struggle to provide answers. While this certainly does not apply to every young person, there is a perception that social trends, entertainment, and online culture often receive far more attention than subjects such as history, geography, literature, or current affairs.</p>
+
+<p>Language among teenagers tends to be highly repetitive. Slang terms spread quickly within peer groups and social media circles, becoming catch-all expressions that replace a wider vocabulary. As a result, conversations can sometimes sound repetitive or formulaic. This is not unique to the current generation, however. Throughout history, young people have developed their own slang and communication styles, often to distinguish themselves from older generations.</p>
+
+<p>Whether one finds these trends amusing, frustrating, or simply interesting, they reflect broader social dynamics within youth culture. The desire for social acceptance, the influence of trends, and changing educational and media environments all play a role in shaping how young people think, speak, and behave.</p>
+<br>
+
+     <br><br>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script>
+
+
+/* HEADER MOODS */
+
+const title=document.querySelector(".header h1");
+const status=document.querySelector(".status");
+
+const moods=[
+["♡ kennedi m cotarelo ♡"],
+["♡ kennedicotarelo.com ♡"]
+];
+
+let moodIndex=0;
+
+title.addEventListener("click",()=>{
+
+    moodIndex=(moodIndex+1)%moods.length;
+
+    title.textContent=moods[moodIndex][0];
+
+    status.textContent=moods[moodIndex][1];
+
+});
+
+</script>
+
+</body>
+</html>
