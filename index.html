@@ -147,11 +147,6 @@ body{
 
 }
 
-.welcomeFade{
-    opacity:0;
-    pointer-events:none;
-}
-
 /* =========================================
    MENU
 ========================================= */
@@ -168,7 +163,7 @@ body{
 
     z-index:10;
 
-    opacity:0;
+    opacity:1;
 
     transition:1.2s ease;
 }
@@ -288,9 +283,16 @@ filter:blur(14px);
 opacity:.22;
 }
 }
+
 /* =========================================
    MOBILE
 ========================================= */
+
+    .page{
+        width:100%;
+    }
+
+}
 
 @media(max-width:700px){
 
@@ -329,6 +331,8 @@ opacity:.22;
 
 .page{
 
+    visibility: hidden;
+
     position:fixed;
 
     scrollbar-width:none;
@@ -346,22 +350,19 @@ opacity:.22;
     transform:translateX(100%);
 
     transition:
-    transform .25s ease;
+        transform .3s ease,
+        opacity .3s ease;
+}
 
-    background:
-    linear-gradient(
-        180deg,
-        rgba(0,0,0,.10),
-        rgba(0,0,0,.20)
-    );
+    background: transparent;
 
-    border-left:
-    1px solid rgba(255,255,255,.04);
+    border-left: none;
 
     box-shadow:
-    -20px 0 80px rgba(255,255,255,.015);
+        -40px 0 120px rgba(0,0,0,.55);
 
     z-index:50;
+    backdrop-filter: blur(4px);
 
 }
 
@@ -373,7 +374,10 @@ opacity:.22;
 
 .page.active{
 
-    transform:translateX(0);
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
 
 }
 
@@ -381,20 +385,7 @@ opacity:.22;
 
 .page::before{
 
-    content:"";
-
-    position:absolute;
-
-    inset:0;
-
-    background:
-    linear-gradient(
-        135deg,
-        rgba(255,255,255,.025),
-        rgba(255,255,255,0)
-    );
-
-    pointer-events:none;
+    display:none;
 
 }
 
@@ -626,47 +617,6 @@ user-select: none;
   line-height: 1.5;
 }
 
-/* ---------------- ROSE RAIN ---------------- */
-
-#rose-snow {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: 1; /* adjust as needed */
-}
-
-.rose-petal {
-    position: absolute;
-    top: -20px;
-    width: 10px;
-    height: 14px;
-    border-radius: 50% 0 50% 50%;
-    background: linear-gradient(
-        135deg,
-        rgba(255, 170, 190, 0.7),
-        rgba(220, 40, 80, 0.7)
-    );
-    opacity: 0.35;
-    filter: blur(0.2px);
-    animation: roseFall linear forwards;
-}
-
-@keyframes roseFall {
-    from {
-        transform:
-            translateY(-20px)
-            translateX(0)
-            rotate(0deg);
-    }
-    to {
-        transform:
-            translateY(110vh)
-            translateX(var(--drift))
-            rotate(var(--spin));
-    }
-}
-
 </style>
 </head>
 
@@ -680,26 +630,8 @@ user-select: none;
 <div class="flash"></div>
 
 <!-- =========================================
-     WELCOME SCREEN
-========================================= -->
-
-<div id="welcomeScreen">
-
-    <div id="enterBox">
-
-        <button id="enterBtn">
-            get psyched
-        </button>
-
-    </div>
-
-</div>
-
-<!-- =========================================
      MENU
 ========================================= -->
-
-<div id="rose-snow"></div>
 
 <div class="container">
 
@@ -762,13 +694,13 @@ user-select: none;
 
 
 <div id="pages">
-<section id="games" class="page"><button class="closePage">✕</button><h1>games</h1><div style="height:2000px">
+<section id="games" class="page"><button class="closePage">✕</button><h1>games</h1><div>
 
             <div class="box">
 	<h3>official games</h3>
 <a href="" target="_self">Theocratic Light (new, WIP)</a>
 <br><br>
-<a href="destroy.html" target="_self"><l>Destroy: Rebuilt Complete Edition</h3></l></a>
+<a href="destroy.html" target="_self"><span>Destroy: Rebuilt Complete Edition</h3></l></a>
 <br><br>
 <a href="tenebrific.html" target="_self"><l>Tenebrific - The Dark Hope</hp></l></a>
 <br><br><br>
@@ -784,7 +716,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="mods" class="page"><button class="closePage">✕</button><h1>mods</h1><div style="height:2000px">
+<section id="mods" class="page"><button class="closePage">✕</button><h1>mods</h1><div>
 
            <div class="box">
 
@@ -842,7 +774,7 @@ user-select: none;
 
 
 </div></section>
-<section id="software" class="page"><button class="closePage">✕</button><h1>software</h1><div style="height:2000px">
+<section id="software" class="page"><button class="closePage">✕</button><h1>software</h1><div>
 
 
             <div class="box">
@@ -862,7 +794,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="articles" class="page"><button class="closePage">✕</button><h1>articles</h1><div style="height:2000px">
+<section id="articles" class="page"><button class="closePage">✕</button><h1>articles</h1><div>
 
             <div class="box">
 
@@ -882,7 +814,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="gallery" class="page"><button class="closePage">✕</button><h1>gallery</h1><div style="height:2000px">
+<section id="gallery" class="page"><button class="closePage">✕</button><h1>gallery</h1><div>
 
             <div class="box">
 
@@ -891,7 +823,7 @@ user-select: none;
                 <img src="images/fadinglifeoriginal.jpg">
             </div>
                 <br><br>
-		kenken out of box by 'celine' - 2026 (thank you <3)
+		'kenken out of box' by celine (2026) thank you <3
             <div class="center-img">
                 <img src="images/outtabox.jpg">
             </div>
@@ -900,7 +832,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="about" class="page"><button class="closePage">✕</button><h1>about</h1><div style="height:2000px">
+<section id="about" class="page"><button class="closePage">✕</button><h1>about</h1><div>
 
            <div class="box">
 <div style="text-align: center; margin: 10px;">
@@ -939,7 +871,7 @@ src="buttonsound/psyched.mp3">
 </audio>
 
 <audio id="sound1"
-src="buttonsound/picked.mp3">
+src="choose.mp3">
 </audio>
 
 <script>
@@ -970,134 +902,16 @@ if (noise) {
     animate();
 }
 
-/* =========================================
-   ROSE SNOW
-========================================= */
-
-const roseSnow = document.getElementById("rose-snow");
-
-function createPetal() {
-    const petal = document.createElement("div");
-    petal.className = "rose-petal";
-
-    const size = 6 + Math.random() * 8;
-
-    petal.style.width = size + "px";
-    petal.style.height = size * 1.4 + "px";
-
-    petal.style.left = Math.random() * 100 + "vw";
-
-    const duration = 8 + Math.random() * 8;
-
-    petal.style.animationDuration = duration + "s";
-
-    petal.style.setProperty(
-        "--drift",
-        (Math.random() * 120 - 60) + "px"
-    );
-
-    petal.style.setProperty(
-        "--spin",
-        (Math.random() * 180 - 90) + "deg"
-    );
-
-    roseSnow.appendChild(petal);
-
-    petal.addEventListener("animationend", () => {
-        petal.remove();
-    });
-}
-
-/* Gentle snowfall */
-setInterval(createPetal, 300);
-
-/* =========================================
-   WELCOME SCREEN
-========================================= */
-
-const welcomeScreen =
-document.getElementById("welcomeScreen");
-
-const enterBox =
-document.getElementById("enterBox");
-
-const enterBtn =
-document.getElementById("enterBtn");
-
 const container =
 document.querySelector(".container");
 
-/* FIRST VISIT CHECK */
-
-if(localStorage.getItem("enteredSite")){
-
-    welcomeScreen.style.display = "none";
-
-    container.style.opacity = "1";
-
-}else{
-
-    enterBtn.addEventListener("click",()=>{
-
-        localStorage.setItem(
-            "enteredSite",
-            "true"
-        );
-
-        const sound =
-        document.getElementById("sound");
-
-        sound.volume = 0.7;
-
-        sound.currentTime = 0;
-
-        sound.play().catch(()=>{});
-
-        enterBox.classList.add(
-            "welcomeExit"
-        );
-
-        setTimeout(()=>{
-
-            welcomeScreen.classList.add(
-                "welcomeFade"
-            );
-
-            container.style.opacity =
-            "1";
-
-        },850);
-
-        setTimeout(()=>{
-
-            welcomeScreen.remove();
-
-        },1800);
-
-    });
-
-}
+container.style.opacity = "1";
 
 /* =========================================
-   RANDOM BACKGROUND
+   BACKGROUND
 ========================================= */
 
-const gifs = [
-];
-
-let gif =
-sessionStorage.getItem("bgGif");
-
-if (!gif) {
-
-    gif =
-    gifs[Math.floor(Math.random() * gifs.length)];
-
-    sessionStorage.setItem("bgGif", gif);
-}
-
-document.querySelector(".bg").style.backgroundImage =
-`linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.88)), url('${gif}')`;
+const gif = "images/background.jpg";
 
 /* =========================================
    BG MUSIC
@@ -1247,8 +1061,39 @@ document.querySelectorAll(".soundLink1").forEach(link=>{
     });
 
 });
+
 document.querySelectorAll('.closePage').forEach(btn=>{
  btn.addEventListener('click',()=>btn.closest('.page').classList.remove('active'));
+});
+
+/* =========================================
+   EASY PAGE CLOSE
+========================================= */
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key === "Escape") {
+
+        document
+            .querySelectorAll(".page.active")
+            .forEach(page => {
+                page.classList.remove("active");
+            });
+    }
+});
+
+document.addEventListener("click", (e) => {
+
+    const activePage = document.querySelector(".page.active");
+
+    if (!activePage) return;
+
+    const clickedPage = e.target.closest(".page");
+    const clickedMenu = e.target.closest(".sidebar");
+
+    if (!clickedPage && !clickedMenu) {
+        activePage.classList.remove("active");
+    }
 });
 
 </script>
