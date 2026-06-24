@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>kennedi [games]</title>
+<link rel="icon" type="image/x-icon" href="images/tablogo.ico">
+
+<style>
+
+:root{
+    --pink:#ED64F5;
+    --purple:#43256E;
+    --dark:#13022D;
+}
+
+/* ---------------- BODY ---------------- */
+
+body{
+    margin:0;
+    padding:0;
+
+background:
+  linear-gradient(
+    90deg,
+    rgba(244,182,216,0.15),
+    rgba(216,196,255,0.15)
+  ),
+  url("images/backgrouund.gif") repeat 0 0 / 120px 120px;
+
+    font-family: Verdana, sans-serif;
+    color:#fceaff;
+
+    cursor:url("images/cursor.webp") 32 32, auto;
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.container{
+    width:900px;
+    max-width:95%;
+    margin:auto;
+
+    background:rgba(19,2,45,0.45);
+
+    border:2px solid rgba(237,100,245,0.4);
+
+    box-shadow:
+    0 0 30px rgba(237,100,245,0.25);
+
+    backdrop-filter:blur(8px);
+    border-radius:18px;
+
+    overflow:hidden;
+}
+
+/* ---------------- TOPBAR ---------------- */
+
+.topbar{
+    background:rgba(19,2,45,0.7);
+    padding:10px 15px;
+    font-size:13px;
+    border-bottom:1px solid rgba(237,100,245,0.25);
+}
+
+/* ---------------- HEADER ---------------- */
+
+.header{
+    text-align:center;
+    padding:35px 20px;
+
+    background:
+    linear-gradient(
+    to right,
+    rgba(67,37,110,0.6),
+    rgba(237,100,245,0.25)
+    );
+    padding:15px 10px;
+    border-bottom:1px solid rgba(237,100,245,0.3);
+}
+
+.header h1{
+    user-select: none;
+    margin:0;
+    font-size:42px;
+    color:#fff;
+
+    text-shadow:
+    0 0 12px rgba(237,100,245,0.7);
+
+    transition:0.25s ease;
+    font-size:30px;
+    cursor:pointer;
+}
+
+.header h1:hover{
+    transform:scale(1.05);
+}
+
+.status{
+    margin-top:8px;
+    font-size:13px;
+    color:#d7bfff;
+}
+
+/* ---------------- FLEX LAYOUT ---------------- */
+
+a{
+    color:#ff6fb0;
+    text-decoration:none;
+    transition:0.2s ease;
+}
+
+a:hover{
+    color:#ffffff;
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ff6fb0;
+}
+
+.content{
+    display:flex;
+}
+
+.sidebar{
+    width:200px;
+
+    background:rgba(19,2,45,0.45);
+
+    padding:20px;
+
+    border-right:1px solid rgba(237,100,245,0.2);
+}
+
+.sidebar h3{
+    color:#ED64F5;
+    margin-top:0;
+}
+
+.sidebar ul{
+    list-style:none;
+    padding:0;
+}
+
+.sidebar li{
+    margin:12px 0;
+}
+
+.sidebar a{
+    display:block;
+
+    text-decoration:none;
+    color:#fff;
+
+    padding:10px 14px;
+
+    border-radius:10px;
+
+    transition:0.25s;
+}
+
+.sidebar a:hover{
+    background:#43256E;
+
+    transform:scale(1.04);
+
+    text-shadow:
+    0 0 12px rgba(255,255,255,0.7);
+}
+
+a:hover{
+    color:#fff;
+
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ED64F5,
+    0 0 20px rgba(237,100,245,0.8);
+}
+
+/* ---------------- MAIN ---------------- */
+
+main{
+    flex:1;
+    padding:25px;
+
+    background:
+    rgba(67,37,110,0.35);
+}
+
+/* ---------------- BOX ---------------- */
+
+.box{
+    text-align:left;
+
+    background:rgba(255,243,250,0.12);
+
+    border:1px solid rgba(237,100,245,0.4);
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+
+    backdrop-filter:blur(6px);
+}
+
+/* ---------------- LINKS ---------------- */
+
+.lr-link{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.lr-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    width:0%;
+    height:1px;
+    background:rgba(199,92,255,0.9);
+    transition:width 0.4s ease;
+}
+
+.lr-link:hover::after{
+    width:100%;
+}
+
+/* ---------------- TOOLTIP ---------------- */
+
+.tooltip-link{
+    position:relative;
+}
+
+.tooltip-text{
+    visibility:hidden;
+    opacity:0;
+
+    transition:0.4s;
+
+    position:absolute;
+
+    bottom:125%;
+    left:50%;
+
+    transform:translateX(-50%);
+
+     background: #43256E;
+
+    color: #fceaff;
+
+    padding:6px 10px;
+
+    border-radius:6px;
+
+    font-size:12px;
+
+    white-space:nowrap;
+}
+
+.tooltip-link:hover .tooltip-text{
+    visibility:visible;
+    opacity:1;
+}
+
+
+/* ---------------- MOBILE ---------------- */
+
+@media(max-width:800px){
+
+    .content{
+        flex-direction:column;
+    }
+
+    .sidebar{
+        width:auto;
+        border-right:none;
+        border-bottom:1px solid rgba(237,100,245,0.2);
+    }
+
+}
+
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+    </div>
+
+    <div class="header">
+        <h1>♡ kennedi ♡</h1>
+    </div>
+
+    <div class="content">
+
+        <!-- SIDEBAR -->
+
+        <aside class="sidebar">
+
+            <ul>
+                <li><a href="index.html">home</a></li>
+            </ul>
+
+        </aside>
+
+        <!-- MAIN -->
+
+        <main>
+
+	<div class="box">
+	      <l>Theocratic Light</l>
+		<br>
+	      <i style="font-size: 12px;">status: WIP</i>
+
+<div style="display:flex; justify-content:right; align-items:right;">
+  <img 
+    src="images/theocraticicon.png"
+    width="100"
+    style="border-radius:10px;"
+  >
+</div>
+
+
+	</div>
+
+            <div class="box">
+<p> Theocratic Light is narritive story about letting go of your past.</p>
+<p> No matter how painful the memories you have, eventually you'll have to let go, or drown in the past. Try to find comfort in the past's shining light on present. Let them remain as a memory.</p>
+<br>
+<p> The protagonist returns to their childhood place after long set of years. Reliving the past memories, but the memories will become hostile. Manipulating echos from the past while walking and reminiscing, the protagonist have to resist the past's infulence. </p>
+<br>
+<p>work in progress.</p>
+<br>
+
+<p>(Defectus 2017-2026)</p>
+<br>
+
+     <br><br>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script>
+
+
+/* HEADER MOODS */
+
+const title=document.querySelector(".header h1");
+const status=document.querySelector(".status");
+
+const moods=[
+["♡ kennedi m cotarelo ♡"],
+["♡ kennedicotarelo.com ♡"]
+];
+
+let moodIndex=0;
+
+title.addEventListener("click",()=>{
+
+    moodIndex=(moodIndex+1)%moods.length;
+
+    title.textContent=moods[moodIndex][0];
+
+    status.textContent=moods[moodIndex][1];
+
+});
+
+</script>
+
+</body>
+</html>
