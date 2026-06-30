@@ -617,6 +617,49 @@ user-select: none;
   line-height: 1.5;
 }
 
+/* Cinematic Bars */
+.cinematic-bars {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 999999;
+}
+
+.cinematic-bars .bar {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background: #000;
+}
+
+.cinematic-bars .top {
+    top: 0;
+}
+
+.cinematic-bars .bottom {
+    bottom: 0;
+}
+
+.cinematic-bars.animate .top,
+.cinematic-bars.animate .bottom {
+    animation: cinematicReveal 1.2s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+.cinematic-bars.finished .top,
+.cinematic-bars.finished .bottom {
+    height: 10vh; /* Final letterbox size */
+}
+
+@keyframes cinematicReveal {
+    from {
+        height: 0;
+    }
+    to {
+        height: 10vh;
+    }
+}
+
 </style>
 </head>
 
@@ -632,6 +675,11 @@ user-select: none;
 <!-- =========================================
      MENU
 ========================================= -->
+
+<div class="cinematic-bars">
+    <div class="bar top"></div>
+    <div class="bar bottom"></div>
+</div>
 
 <div class="container">
 
@@ -694,7 +742,7 @@ user-select: none;
 
 
 <div id="pages">
-<section id="games" class="page"><button class="closePage">✕</button><h1>games</h1><div>
+<section id="games" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
 
             <div class="box">
 	<h3>official games</h3>
@@ -716,7 +764,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="mods" class="page"><button class="closePage">✕</button><h1>mods</h1><div>
+<section id="mods" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
 
            <div class="box">
 
@@ -786,7 +834,7 @@ user-select: none;
 
 
 </div></section>
-<section id="software" class="page"><button class="closePage">✕</button><h1>software</h1><div>
+<section id="software" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
 
 
             <div class="box">
@@ -806,7 +854,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="articles" class="page"><button class="closePage">✕</button><h1>articles</h1><div>
+<section id="articles" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
 
             <div class="box">
 
@@ -826,7 +874,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="gallery" class="page"><button class="closePage">✕</button><h1>gallery</h1><div>
+<section id="gallery" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
 
             <div class="box">
 
@@ -844,7 +892,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="about" class="page"><button class="closePage">✕</button><h1>about</h1><div>
+<section id="about" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
 
            <div class="box">
 <div style="text-align: center; margin: 10px;">
@@ -887,6 +935,26 @@ src="choose.mp3">
 </audio>
 
 <script>
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const bars = document.querySelector(".cinematic-bars");
+
+    if (!bars) return;
+
+    if (!localStorage.getItem("cinematicBarsPlayed")) {
+        bars.classList.add("animate");
+
+        bars.addEventListener("animationend", () => {
+            bars.classList.remove("animate");
+            bars.classList.add("finished");
+        }, { once: true });
+
+        localStorage.setItem("cinematicBarsPlayed", "true");
+    } else {
+        bars.classList.add("finished");
+    }
+});
 
 /* =========================================
    MOVING BACKGROUND
