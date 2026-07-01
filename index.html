@@ -9,7 +9,7 @@
 
 <style>
 
-    font-family: Verdana, sans-serif;
+    font-family : Verdana, sans-serif;
 
 *{
     margin:0;
@@ -565,6 +565,102 @@ a:hover{
     0 0 24px rgba(237,100,245,0.35);
 }
 
+.zoom-gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.zoom-gallery img {
+  width: 160px;
+  height: 110px;
+  object-fit: cover;
+  cursor: inherit;
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.zoom-gallery img:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.zoom-tooltip {
+  position: fixed;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  pointer-events: none;
+  z-index: 999999;
+  transform: translate(-50%, -120%);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.zoom-viewer {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  z-index: 999999;
+}
+
+.zoom-viewer img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+
+  max-width: 90vw;
+  max-height: 90vh;
+
+  width: auto;
+  height: auto;
+
+  z-index: 2;
+
+  user-select: none;
+  pointer-events: auto;
+}
+
+.zoom-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 26px;
+  color: white;
+  cursor: pointer;
+
+  z-index: 3;
+}
+
+.zoom-title {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 16px;
+  font-family: sans-serif;
+  z-index: 4;
+  background: rgba(0,0,0,0.5);
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.zoom-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 1;
+}
+
 /* ---------------- COPYRIGHT BUTTON ---------------- */
 
 .hint-wrap {
@@ -617,49 +713,6 @@ user-select: none;
   line-height: 1.5;
 }
 
-/* Cinematic Bars */
-.cinematic-bars {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 999999;
-}
-
-.cinematic-bars .bar {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 0;
-    background: #000;
-}
-
-.cinematic-bars .top {
-    top: 0;
-}
-
-.cinematic-bars .bottom {
-    bottom: 0;
-}
-
-.cinematic-bars.animate .top,
-.cinematic-bars.animate .bottom {
-    animation: cinematicReveal 1.2s cubic-bezier(.22,1,.36,1) forwards;
-}
-
-.cinematic-bars.finished .top,
-.cinematic-bars.finished .bottom {
-    height: 10vh; /* Final letterbox size */
-}
-
-@keyframes cinematicReveal {
-    from {
-        height: 0;
-    }
-    to {
-        height: 10vh;
-    }
-}
-
 </style>
 </head>
 
@@ -675,11 +728,6 @@ user-select: none;
 <!-- =========================================
      MENU
 ========================================= -->
-
-<div class="cinematic-bars">
-    <div class="bar top"></div>
-    <div class="bar bottom"></div>
-</div>
 
 <div class="container">
 
@@ -721,6 +769,13 @@ user-select: none;
 
             <li>
                 <a class="soundLink1"
+                data-page="music">
+                music
+                </a>
+            </li>
+
+            <li>
+                <a class="soundLink1"
                 data-page="gallery">
                 gallery
                 </a>
@@ -742,7 +797,7 @@ user-select: none;
 
 
 <div id="pages">
-<section id="games" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
+<section id="games" class="page"><button class="closePage">✕</button><h1>games</h1><div>
 
             <div class="box">
 	<h3>official games</h3>
@@ -764,7 +819,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="mods" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
+<section id="mods" class="page"><button class="closePage">✕</button><h1>mods</h1><div>
 
            <div class="box">
 
@@ -779,6 +834,7 @@ user-select: none;
 <a href="" target="_self">Vampire Slayer: Chapter VII</a>
 <br><br>
 	<h3 class="blink-text">half-life addons</h3>
+<a href="https://gamebanana.com/mods/690073" target="_self">Aesthetic Menu Theme</a>
 <a href="https://gamebanana.com/mods/686406" target="_self">Upscaled High Contrast Textures</a>
 <br><br>
 <a href="https://gamebanana.com/mods/677767" target="_self">Cute Sven Co-op Weapon Pack</a>
@@ -834,7 +890,7 @@ user-select: none;
 
 
 </div></section>
-<section id="software" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
+<section id="software" class="page"><button class="closePage">✕</button><h1>software</h1><div>
 
 
             <div class="box">
@@ -854,7 +910,7 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="articles" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
+<section id="articles" class="page"><button class="closePage">✕</button><h1>articles</h1><div>
 
             <div class="box">
 
@@ -874,35 +930,69 @@ user-select: none;
             </div>
 
 </div></section>
-<section id="gallery" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
+<section id="music" class="page"><button class="closePage">✕</button><h1>music</h1><div>
 
             <div class="box">
 
-		'<a href=https://www.youtube.com/watch?v=8PAFJwhTPx8>fading life</a>' cover without title
-            <div class="center-img">
-                <img src="images/fadinglifeoriginal.jpg">
-            </div>
-                <br><br>
-		'kenken out of box' by celine (2026) thank you <3
-            <div class="center-img">
-                <img src="images/outtabox.jpg">
-            </div>
-                <br><br>
+<h3 class="blink-text">official music</h3>
+<a href="tracks\kenndii - Give a Life.mp3" target="_self">kenndii - give a life</a>
+<p style="font-size: 11px;"> download the original experimental single release here </p>
 
+<br>
+
+<h3 class="blink-text">official soundtracks</h3>
+
+<p style="font-size: 11px;"> no upload yet </p>
+
+<br>
+
+<h3 class="blink-text">me playing tracks</h3>
+
+<p>promise</p>
+ <audio controls>
+  <source src="tracks\promise.mp3" type="audio/mpeg">
+</audio> 
+
+<br><br>
+
+<p>never</p>
+ <audio controls>
+  <source src="tracks\never.mp3" type="audio/mpeg">
+promise
+</audio> 
             </div>
 
 </div></section>
-<section id="about" class="page"><button class="closePage">✕</button><h1>⠀</h1><div>
+<section id="gallery" class="page"><button class="closePage">✕</button><h1>gallery</h1><div>
+
+            <div class="box">
+<div class="zoom-gallery">
+  <img src="images/fadinglifeoriginal.jpg" data-title="'fading life' cover without title">
+  <img src="images/outtabox.jpg" data-title="'kenken out of box' by celine (2026) - thank you <3">
+  <img src="images/masculinfeminen_colorized.jpg" data-title="masculin féminin (1966) - colorize work">
+</div>
+</div></section>
+<section id="about" class="page"><button class="closePage">✕</button><h1>about</h1><div>
 
            <div class="box">
 <div style="text-align: center; margin: 10px;">
-<l>experiments, and fragments of ideas—some complete, some still unfolding. each project is part exploration, part expression, built inside the systems of games and gently pushed beyond them.</l>
+<b><p>i'm a video game developer/modder, director, writer and composer </p></b>
+<p>
+<l>experiments, and fragments of ideas—some complete, some still unfolding.</l> 
+<br><br>
+<l>each project is part exploration, part expression, built inside the systems of games <br> and gently pushed beyond them.</l>
 <br>
 <br>
-<l>i primarily create games and mods, alongside writing in areas such as storytelling and philosophy. i also have experience in directing from past projects, as well as a strong background in audio engineering. earlier, i worked extensively with web and programming including c#, c++, and LUA, although my current focus has shifted more toward creative work. overall i love creating feelings through experiences, originally since age of seven.</l>
+<l>i primarily create games and mods, alongside writing in areas such as storytelling and philosophy. </l> 
+<br>
+<l> i've had experiences in directing from past projects, as well as a strong background <br> in audio engineering, composing. i worked extensively with coding including c#, c++, and LUA.</l>
 <br>
 <br>
-<l>sharing my 'art' downloadable in this site and art should stay as it is, not as a product.</l>
+<l> overall i love creating feelings through experiences, it has been my passion since age of seven.</l>
+</p>
+<br>
+<br>
+<i><l>sharing my 'art' and art should stay as it is, not as a product.</l></i>
 <br>
 <br>
 <br>
@@ -913,7 +1003,15 @@ user-select: none;
   <label for="hint-toggle" class="hint-toggle"><strong>©</strong></label>
 
   <span class="hint-text">
-     2026 kennedi monika cotarelo / defectus® everything here is made with intention and care, and is meant to be experienced only in its original form. my work is exclusive to my uploads—any version found elsewhere has not been shared or authorized by me. please do not reupload, redistribute, alter, or remix any part of this content without permission. all third-party materials remain the property of their respective creators.<br>
+     <l> (2026) kennedi monika cotarelo / defectus® </l> <br> <br>
+
+everything here is made with intention and care, and is meant to be experienced only in its original form. <br> 
+
+my work is exclusive to my uploads—any version found elsewhere has not been shared or authorized by me. <br>
+
+please do not reupload, redistribute, alter, or remix any part of this content without permission. <br>
+
+all third-party materials remain the property of their respective creators.<br>
   </span>
 </div>
 
@@ -935,26 +1033,6 @@ src="choose.mp3">
 </audio>
 
 <script>
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    const bars = document.querySelector(".cinematic-bars");
-
-    if (!bars) return;
-
-    if (!localStorage.getItem("cinematicBarsPlayed")) {
-        bars.classList.add("animate");
-
-        bars.addEventListener("animationend", () => {
-            bars.classList.remove("animate");
-            bars.classList.add("finished");
-        }, { once: true });
-
-        localStorage.setItem("cinematicBarsPlayed", "true");
-    } else {
-        bars.classList.add("finished");
-    }
-});
 
 /* =========================================
    MOVING BACKGROUND
@@ -1174,6 +1252,121 @@ document.addEventListener("click", (e) => {
     if (!clickedPage && !clickedMenu) {
         activePage.classList.remove("active");
     }
+});
+
+/* =========================================
+   IMAGE VIEWER
+========================================= */
+
+const tooltip = document.createElement("div");
+tooltip.className = "zoom-tooltip";
+document.body.appendChild(tooltip);
+
+function showTooltip(e, text) {
+  tooltip.textContent = text || "";
+  tooltip.style.left = e.clientX + "px";
+  tooltip.style.top = e.clientY + "px";
+  tooltip.style.opacity = "1";
+}
+
+function hideTooltip() {
+  tooltip.style.opacity = "0";
+}
+
+(function () {
+
+  function createViewer(src, title) {
+
+    const viewer = document.createElement("div");
+    viewer.className = "zoom-viewer";
+
+    const backdrop = document.createElement("div");
+    backdrop.className = "zoom-backdrop";
+
+    const img = document.createElement("img");
+    img.src = src;
+
+    const closeBtn = document.createElement("div");
+    closeBtn.className = "zoom-close";
+    closeBtn.textContent = "✕";
+
+    const titleEl = document.createElement("div");
+    titleEl.className = "zoom-title";
+    titleEl.textContent = title || "";
+
+    viewer.appendChild(backdrop);
+    viewer.appendChild(img);
+    viewer.appendChild(closeBtn);
+    viewer.appendChild(titleEl);
+
+    document.body.appendChild(viewer);
+
+viewer.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+img.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+
+    let scale = 1;
+    let x = 0;
+    let y = 0;
+
+
+function render() {
+  img.style.transform =
+    `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(${scale})`;
+}
+
+    function close() {
+      viewer.remove();
+    }
+
+    closeBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      close();
+    });
+
+	backdrop.addEventListener("click", (e) => {
+ 	 e.preventDefault();
+ 	 e.stopPropagation();
+ 	 close();
+	});
+
+    viewer.addEventListener("wheel", (e) => {
+      e.preventDefault();
+
+      const step = 0.15;
+      scale += (e.deltaY < 0 ? 1 : -1) * step;
+      scale = Math.max(1, Math.min(6, scale));
+
+      render();
+    }, { passive: false });
+
+    render();
+  }
+
+  document.querySelectorAll(".zoom-gallery img").forEach(img => {
+    img.addEventListener("click", () => {
+      createViewer(img.src, img.dataset.title);
+    });
+  });
+
+})();
+
+document.querySelectorAll(".zoom-gallery img").forEach(img => {
+
+  img.addEventListener("mouseenter", (e) => {
+    showTooltip(e, img.dataset.title);
+  });
+
+  img.addEventListener("mousemove", (e) => {
+    showTooltip(e, img.dataset.title);
+  });
+
+  img.addEventListener("mouseleave", hideTooltip);
+
 });
 
 </script>
