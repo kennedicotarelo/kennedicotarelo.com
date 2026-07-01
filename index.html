@@ -76,78 +76,6 @@ body{
 }
 
 /* =========================================
-   WELCOME SCREEN
-========================================= */
-
-#welcomeScreen{
-    position:fixed;
-    inset:0;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-
-    background:
-    rgba(0,0,0,.92);
-
-    z-index:99999;
-
-    transition:1s;
-}
-
-#enterBtn{
-
-    border:none;
-
-    background:#111;
-
-    color:#ddd;
-
-    padding:14px 30px;
-
-    font-family:'Oswald', sans-serif;
-
-    letter-spacing:3px;
-
-    cursor:pointer;
-
-    transition:.25s;
-}
-
-#enterBtn:hover{
-
-    background:
-    linear-gradient(135deg,#ED64F5,#7c4dff);
-    color:#000;
-
-    box-shadow:
-    0 0 15px rgba(255,255,255,.35);
-
-}
-
-.welcomeExit{
-
-    animation:
-    zoomForward 1.2s forwards;
-}
-
-@keyframes zoomForward{
-
-    0%{
-        opacity:1;
-        transform:scale(1);
-        filter:blur(0px);
-    }
-
-    100%{
-        opacity:0;
-        transform:scale(2.2);
-        filter:blur(12px);
-    }
-
-}
-
-/* =========================================
    MENU
 ========================================= */
 
@@ -801,6 +729,7 @@ user-select: none;
 
             <div class="box">
 	<h3>official games</h3>
+<br>
 <a href="theocraticlight.html" target="_self">Theocratic Light</a>
 <br><br>
 <a href="destroy.html" target="_self"><span>Destroy: Rebuilt Complete Edition</h3></l></a>
@@ -1032,9 +961,6 @@ all third-party materials remain the property of their respective creators.<br>
 
 <audio id="bgMusic" loop></audio>
 
-<audio id="sound"
-src="buttonsound/psyched.mp3">
-</audio>
 
 <audio id="sound1"
 src="choose.mp3">
