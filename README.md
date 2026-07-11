@@ -1,2 +1,1 @@
-# kennedicotarelo.com
 personal website.
