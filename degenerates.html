@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>kennedi [articles]</title>
+<link rel="icon" type="image/x-icon" href="images/tablogo.ico">
+
+<style>
+
+    font-family : Verdana, sans-serif;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    overflow-y: auto;
+    overflow-x: hidden; 
+    background:#000;
+    font-family: 'Roboto Condensed', sans-serif;
+    height:100vh;
+    color:white;
+
+    cursor:url("images/cursor.webp") 32 32, auto;
+}
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.bg{
+    animation:bgIntro 4s ease forwards;
+}
+
+@keyframes bgIntro{
+    from{
+        transform:scale(1.12);
+    }
+    to{
+        transform:scale(1.05);
+    }
+}
+
+/* =========================================
+   NOISE / VIGNETTE
+========================================= */
+
+.noise{
+    position:fixed;
+    inset:0;
+
+    background:
+    url("images/backgrouundmain.gif");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    opacity:.70;
+
+    mix-blend-mode:screen;
+
+    pointer-events:none;
+}
+
+.vignette{
+    position:fixed;
+    inset:0;
+
+    box-shadow:
+    inset 0 0 220px rgba(0,0,0,.98);
+
+    pointer-events:none;
+}
+
+/* =========================================
+   MENU
+========================================= */
+
+
+.title{
+    user-select: none;
+
+    font-size:5rem;
+    font-weight:300;
+
+    letter-spacing:12px;
+
+    margin-bottom:40px;
+
+    color:#fceaff;
+
+    animation:flicker 4s infinite;
+}
+
+@keyframes flicker{
+
+    0%,18%,22%,25%,53%,57%,100%{
+        opacity:1;
+    }
+
+    20%,24%,55%{
+        opacity:.45;
+    }
+
+}
+
+.sidebar ul{
+list-style:none;
+user-select:none;
+}
+
+.sidebar li{
+margin:20px 0;
+}
+
+.sidebar a{
+position:relative;
+display:inline-block;
+text-decoration:none;
+color:#8f8f8f;
+font-size:1.7rem;
+letter-spacing:4px;
+transition:.15s;
+will-change:transform,filter;
+}
+
+.sidebar a::before{
+content:'';
+position:absolute;
+inset:-4px -10px;
+background:rgba(255,255,255,.06);
+filter:blur(8px);
+opacity:0;
+pointer-events:none;
+transition:.15s;
+}
+
+.sidebar a:hover{
+color:#fff;
+text-shadow:
+0 0 4px rgba(255,255,255,.8),
+0 0 12px rgba(255,255,255,.25);
+
+animation:motionBlurFast .22s linear infinite;
+}
+
+.sidebar a:hover::before{
+opacity:1;
+animation:bgPulseFast .35s ease-in-out infinite alternate;
+}
+
+@keyframes motionBlurFast{
+0%{
+transform:translateX(0);
+filter:blur(.2px);
+}
+
+20%{
+transform:translateX(.3px);
+filter:blur(.8px);
+}
+
+40%{
+transform:translateX(-.3px);
+filter:blur(.3px);
+}
+
+60%{
+transform:translateX(.4px);
+filter:blur(1px);
+}
+
+80%{
+transform:translateX(-.2px);
+filter:blur(.4px);
+}
+
+100%{
+transform:translateX(0);
+filter:blur(.2px);
+}
+}
+
+@keyframes bgPulseFast{
+0%{
+filter:blur(6px);
+opacity:.12;
+}
+
+100%{
+filter:blur(14px);
+opacity:.22;
+}
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+    .page{
+        width:100%;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .title{
+        font-size:3rem;
+    }
+
+    .sidebar a{
+        font-size:1.2rem;
+    }
+
+}
+
+@media (max-width: 768px) {
+    * {
+        max-width: 100% !important;
+    }
+
+    table {
+        display: block !important;
+        overflow-x: auto !important;
+    }
+
+    img,
+    iframe,
+    video {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+
+/* =========================================
+   SIDE PAGES
+========================================= */
+
+.page{
+
+    visibility: hidden;
+
+    position:fixed;
+
+    scrollbar-width:none;
+    -ms-overflow-style:none; 
+
+    top:0;
+    right:0;
+
+    width:65%;
+    height:100vh;
+    overflow-y:auto;
+
+    overflow-y:auto;
+
+    transform:translateX(100%);
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease;
+}
+
+    background: transparent;
+
+    border-left: none;
+
+    box-shadow:
+        -40px 0 120px rgba(0,0,0,.55);
+
+    z-index:50;
+    backdrop-filter: blur(4px);
+
+}
+
+.page::-webkit-scrollbar{
+
+    display:none;
+
+}
+
+.page.active{
+
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+
+}
+
+/* subtle glass */
+
+.page::before{
+
+    display:none;
+
+}
+
+/* content */
+
+.pageContent{
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:80px;
+
+    color:#d7d7d7;
+
+    line-height:1.9;
+
+}
+
+/* titles */
+
+.page h1{
+
+    font-size:3rem;
+
+    font-weight:300;
+
+    letter-spacing:8px;
+
+    margin-bottom:30px;
+
+    color:#f4f4f4;
+
+    opacity:.92;
+
+    text-transform:lowercase;
+
+}
+
+/* text */
+
+.page p{
+
+    color:
+    rgba(255,255,255,.75);
+
+    font-size:1rem;
+
+}
+
+/* subtle x */
+
+.closePage{
+
+    position:absolute;
+
+    top:25px;
+    right:25px;
+
+    background:none;
+
+    border:none;
+
+    color:
+    rgba(255,255,255,.18);
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.15s;
+
+    z-index:100;
+
+}
+
+.closePage:hover{
+
+    color:
+    rgba(255,255,255,.6);
+
+}
+
+/* scrollbar */
+
+.page::-webkit-scrollbar{
+
+    width:4px;
+
+}
+
+.page::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+.page::-webkit-scrollbar-thumb{
+
+    background:
+    rgba(255,255,255,.12);
+
+}
+
+.page::-webkit-scrollbar-thumb:hover{
+
+    background:
+    rgba(255,255,255,.28);
+
+}
+
+.box2{
+    text-align:left;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+}
+
+.box{
+    text-align:center;
+
+    padding:18px;
+
+    margin-bottom:20px;
+
+    border-radius:14px;
+}
+
+/* ---------------- LINK STYLE ---------------- */
+
+.lr-link{
+    position:relative;
+    color:#fff;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.lr-link::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-3px;
+    width:0%;
+    height:1px;
+    background:rgba(199,92,255,0.9);
+    transition:width 0.4s ease;
+}
+
+.lr-link:hover::after{
+    width:100%;
+}
+
+a{
+    color:#ff6fb0;
+    text-decoration:none;
+    transition:0.2s ease;
+}
+
+a:hover{
+    color:#ffffff;
+    text-shadow:
+    0 0 6px #ED64F5,
+    0 0 12px #ff6fb0;
+}
+
+/* ---------------- CONTAINER ---------------- */
+
+.container{
+    width:900px;
+    max-width:95%;
+    margin:auto;
+
+    background:rgba(0,2,0,0.35);
+
+    backdrop-filter:blur(8px);
+    border-radius:18px;
+
+    overflow:hidden;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="bg"></div>
+<div class="noise"></div>
+<div class="vignette"></div>
+<div class="flash"></div>
+
+<!-- =========================================
+     MENU
+========================================= -->
+
+<div class="container">
+
+        <aside class="sidebar">
+
+            <ul>
+                <li><a href="index.html">←</a></li>
+            </ul>
+
+        </aside>
+
+	<div class="box">
+	      <l>'Degenerates'</l>
+		<br>
+	      <i style="font-size: 12px;">7/3/2026</i>
+	</div>
+
+            <div class="box2">
+<p> The crossfire of mass arguments is rarely winnable, whether on the internet or in real life. Many people have probably encountered something similar at school. The pattern often goes like this: they watch you, observe your behavior, and look for ways to damage your reputation. People say not to judge others by their appearance, yet sometimes a person's expressions or demeanor can seem to reveal hostility. It's difficult to explain, but you can occasionally sense an underlying resentment regardless of whether someone is considered beautiful, handsome, or unattractive.</p>
+<p>Often, people use their existing reputation or social standing to turn others against a target. Sometimes it only takes one influential person within a group to spread rumors or distort the truth about someone. Unfortunately, the person being targeted may have few friends or supporters, making it even harder to challenge the narrative. It can seem as though the aggressor has nothing better to do than focus on hurting someone they have arbitrarily decided to dislike. In some cases, these campaigns can continue for years because, in the aggressor's mind, their actions feel justified.</p>
+<p>What many people fail to understand is that some individuals will believe what they want to believe and continue their behavior until someone puts a stop to it. Their worldview can become so consumed by resentment that they lose any interest in understanding another person's perspective. They may recognize the harm they are causing, yet convince themselves it is deserved. Over time, the lie becomes their reality.</p>
+<p>In that world, your thoughts and feelings no longer matter to them. Life becomes a stage where other people exist only as characters to manipulate. Ironically, their influence often depends on how willing others are to accept rumors without questioning them. If more people approached accusations with skepticism and sought evidence instead of gossip, it would be much harder for those who thrive on manipulation to succeed.</p>
+<br>
+
+     <br><br>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+<script>
+
+/* =========================================
+   MOVING BACKGROUND
+========================================= */
+
+const noise = document.querySelector(".noise");
+
+if (noise) {
+    let targetX = 0;
+    let currentX = 0;
+
+    document.addEventListener("mousemove", (e) => {
+        targetX = (e.clientX / window.innerWidth - 0.5) * 10;
+    });
+
+    function animate() {
+        currentX += (targetX - currentX) * 0.03;
+
+        noise.style.backgroundPosition =
+            `calc(50% + ${currentX}px) center`;
+
+        requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
+const container =
+document.querySelector(".container");
+
+container.style.opacity = "1";
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+const gif = "images/background.jpg";
+
+</script>
+
+</body>
+</html>
